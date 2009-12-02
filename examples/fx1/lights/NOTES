@@ -1,0 +1,14 @@
+To actually load and run the program - install the linux fxload.
+
+You have to unbind the keyspan driver:
+first find the devices unique number:
+tree /sys/bus/usb/drivers/keyspan/
+Use its bus,port number to unbind:
+sudo chmod a+w /sys/bus/usb/drivers/keyspan/unbind
+sudo echo -n "5-1:1.0" >/sys/bus/usb/drivers/keyspan/unbind
+
+You have to mount the usbfs on Ubuntu
+sudo mount -t usbfs u /proc/bus/usb/
+
+Once you find the usb device, this loads the program.
+sudo fxload -D /proc/bus/usb/005/002 -I lights.ihx
