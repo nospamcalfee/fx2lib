@@ -16,7 +16,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  **/
 #include <ezregs.h>
-#include <chapter9.h>
 /*
  * USA 19 unique port A led bit
  */
