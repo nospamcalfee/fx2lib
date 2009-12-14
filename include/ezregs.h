@@ -308,7 +308,6 @@ sfr at 0x8C TH0;
 sfr at 0x8D TH1;
 sfr at 0x8E CKCON;
 
-  /*  CKCON  */
 sfr at 0x8F SPC_FNC;		// Was WRS in Reg320
 
 sfr at 0x91 EXIF;		// EXIF Bit Values differ from Reg320
