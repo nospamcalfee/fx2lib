@@ -11,4 +11,7 @@ You have to mount the usbfs on Ubuntu
 sudo mount -t usbfs u /proc/bus/usb/
 
 Once you find the usb device, this loads the program.
+The first number is the bus number, the second is the USB device address
+it may change if a reenumeration occurs.
+ 
 sudo fxload -D /proc/bus/usb/005/002 -I lights.ihx
