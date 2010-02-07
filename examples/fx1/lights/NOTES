@@ -1,17 +1,24 @@
-To actually load and run the program - install the linux fxload.
-
-You have to unbind the keyspan driver:
-first find the devices unique number:
+#To actually load and run the program - install the linux fxload.
+#
+#You have to unbind the keyspan driver:
+#first find the devices unique number:
 tree /sys/bus/usb/drivers/keyspan/
-Use its bus,port number to unbind:
+#Use its bus,port number to unbind:
 sudo chmod a+w /sys/bus/usb/drivers/keyspan/unbind
 sudo echo -n "5-1:1.0" >/sys/bus/usb/drivers/keyspan/unbind
-
-You have to mount the usbfs on Ubuntu
+sudo chmod a+w `./findusb.awk 06cd 010c -p`
+echo -n `./findusb.awk 06cd 010c -i` > `./findusb.awk 6cd 10c -p`
+#
+#You have to mount the usbfs on Ubuntu
 sudo mount -t usbfs u /proc/bus/usb/
-
-Once you find the usb device, this loads the program.
-The first number is the bus number, the second is the USB device address
-it may change if a reenumeration occurs.
- 
+#
+#Once you find the usb device, this loads the program.
+#The first number is the bus number, the second is the USB device address
+#it may change if a reenumeration occurs.
+# 
 sudo fxload -D /proc/bus/usb/005/002 -I lights.ihx
+sudo fxload -D `./findusb.awk 06cd 010c -d` -I bulkloop.ihx
+sudo fxload -D `./findusb.awk b404 0410 -d` -I bulkloop.ihx
+
+#to run the test program
+sudo ./xferusb -i 129 -D `./findusb.awk b404 0410 -d`

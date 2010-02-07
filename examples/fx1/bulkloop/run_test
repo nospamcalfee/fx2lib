@@ -1,0 +1,11 @@
+#!/bin/bash
+# load my firmware over my firmware
+my_vid_pid="0b404 410"
+# 
+# To load a new firmware:
+#sudo fxload -D `./findusb.awk ${my_vid_pid} -d` -I bulkloop.ihx
+#
+# To run a test, with no verbosity
+#sudo ./xferusb -i 130 -o 2 -c 1000  -D `./findusb.awk 0b404 410 -d`
+# to run a test slower, with more verbosity
+sudo ../../../utils/xferusb -i 130 -o 2 -c 1000 -v -D `./findusb.awk 0b404 410 -d`

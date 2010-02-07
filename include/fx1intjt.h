@@ -3,6 +3,9 @@
 
 #include "ezregs.h"
 
+// this causes usbjt to be included from the lib
+// not used for anything
+extern u8_t INT2JT;
 /*
  * Hardware fixed interrupts
  */

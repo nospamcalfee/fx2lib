@@ -1,0 +1,21 @@
+This demo does a bulk transfer to/from a keyspan USA-19Qi usb/serial adapter
+It has been tested on Linux, ubuntu karmic 9.10
+It does not use libusb, just the raw sysfs and dev/usb/ files supported
+
+first in the fx1/bulkloop example directory type:
+make
+Then in the utils directory build the test program:
+cc -Wall -g -o xferusb xferusb.c
+
+cd back into the fx1/bulkloop example directory, and
+
+If you have done a fresh plug-in of the cypress usb device:
+./cypress_load
+If you have previously loaded the ezusb software, reload with:
+./my_load
+
+To run a sample test:
+./run_test
+
+
+look at run_test to get an idea of how to run xfertest.

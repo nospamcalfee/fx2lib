@@ -21,10 +21,10 @@
 ; and I guess you could read INT2/4AV for kicks too
 ; read one of them to a dummy location causes this module to
 ; get linked in
-.globl _INT2AV
-.globl _INT4AV
 .globl _INT2JT ; defined as global so this assembly gets included in project 
 
+.globl _INT2AV
+.globl _INT4AV
 .area INT2JV (ABS,OVR)
 .org    0x43 ; this is where USBINT ( interrupt 8 ) jumps to
 _INT2AV = #. + 2 ; two bytes for ljmp (auto set by INT2IVEC)

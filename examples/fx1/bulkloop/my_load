@@ -1,0 +1,6 @@
+#!/bin/bash
+# load my firmware over my firmware
+my_vid_pid="0b404 410"
+# 
+# To load a new firmware:
+sudo fxload -D `./findusb.awk ${my_vid_pid} -d` -I bulkloop.ihx

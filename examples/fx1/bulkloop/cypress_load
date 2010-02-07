@@ -1,0 +1,9 @@
+#!/bin/bash
+# disable cypress driver, load my firmware
+sudo chmod a+w `./findusb.awk 06cd 010c -p`
+# 
+# To unbind an existing driver:
+echo -n `./findusb.awk 06cd 010c -i` > `./findusb.awk 6cd 10c -p`
+# 
+# To load a new firmware:
+sudo fxload -D `./findusb.awk 06cd 010c -d` -I bulkloop.ihx

@@ -10,6 +10,45 @@
 
 #define NEWEZREG(_name,_where,_size) volatile xdata at _where _size _name
 
+/*
+ * define some system wide useful things here, rather than in another header.
+ * After all they don't change much (ever).
+ */
+
+/*
+ * USB max packet sizes.
+ */
+
+#define MAX_PACKET_CNTL 64
+#define MAX_PACKET_BULK_FS 64
+#define MAX_PACKET_BULK_HS 512
+#define MAX_PACKET_INTR_FS 64
+#define MAX_PACKET_INTR_HS 1024
+#define MAX_PACKET_ISOC_FS 1023
+#define MAX_PACKET_ISOC_HS 1024
+
+#define elementsof(x) (sizeof(x)/sizeof((x)[0]))
+
+#define MSB(val) ((unsigned char)(((unsigned int)(val) >> 8) & 0xFF))
+#define LSB(val) ((unsigned char)((unsigned int)(val) & 0xFF))
+
+#ifndef NULL
+#define NULL (void*)0
+#endif
+
+/* 
+ * return status from control packet handlers
+ */
+ 
+enum {
+	SUCCESS = 0,
+	FAILURE,
+	LETMAINHANDLEIT,
+	FALSE=0,
+	TRUE,
+};
+
+
 /*-----------------------------------------------------------------------------
 	Define types
 -----------------------------------------------------------------------------*/
@@ -19,10 +58,11 @@ typedef struct {
 	u8_t cntrl;	// End point control register
 	u8_t bytes;	// End point buffer byte count
 } EPIOC;
-enum {
- 	FALSE = 0,
-	TRUE
-};
+
+#ifndef NULL
+#define NULL (void*)0
+#endif
+
 /* bits */
 #define D0 0x01
 #define D1 0x02
